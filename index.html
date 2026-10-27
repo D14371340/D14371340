@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D14371340 劉嘉凱</title>
+    <meta name="description" content="*** — 2D/3D Lead Animator & Action Choreographer.">
+    <!--   Fonts: Space Grotesk, Syne, JetBrains Mono, Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&family=Syne:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Viewport Camera HUD Framing Overlay (Inspired by The Line Studio Viewfinder) -->
+    <div class="camera-hud-overlay" aria-hidden="true">
+        <div class="hud-corner top-left">
+            <span class="crosshair">+</span>
+            <span class="bracket">┌</span>
+        </div>
+        <div class="hud-corner top-right">
+            <span class="crosshair">+</span>
+            <span class="bracket">┐</span>
+        </div>
+        <div class="hud-corner bottom-left">
+            <span class="crosshair">+</span>
+            <span class="bracket">└</span>
+        </div>
+        <div class="hud-corner bottom-right">
+            <span class="crosshair">+</span>
+            <span class="bracket">┘</span>
+        </div>
+    </div>
+
+    <!-- Main Viewport Telemetry Header Bar -->
+    <aside class="viewfinder-telemetry-bar">
+        <div class="telemetry-left">
+            <div class="rec-badge">
+                <span class="rec-dot"></span>
+                <span class="rec-text">REC ●</span>
+            </div>
+            <span class="telemetry-item" id="live-timecode">TC 00:00:00:00</span>
+            <span class="telemetry-item sep">/</span>
+            <span class="telemetry-item highlight">24.00 FPS</span>
+            <span class="telemetry-item sep">/</span>
+            <span class="telemetry-item">SHUTTER 180°</span>
+        </div>
+        <div class="telemetry-center">
+            <span class="telemetry-tag">[ CAMERA VIEW: DCI 4K 2.39:1 ]</span>
+            <span class="telemetry-tag">[ COLOR PROFILE: SINGLE SOLID COLOR PIC ]</span>
+        </div>
+        <div class="telemetry-right">
+            <span class="telemetry-item">ISO 800</span>
+            <span class="telemetry-item sep">/</span>
+            <span class="telemetry-status">● LIVE FEED</span>
+        </div>
+    </aside>
+
+    <div class="site-wrapper">
+        <!-- Main Navigation Bar (The Line Studio Style) -->
+        <header class="main-header" id="top-nav">
+            <div class="header-inner">
+                <a href="#hero" class="brand-logo" aria-label="Home">
+                    <span class="logo-mark">PROFOLIO</span>
+                    <span class="logo-sub">/ of JIA KAI LIU</span>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="primary-nav" aria-label="Primary Navigation">
+                    <ul class="nav-links">
+                        <li><a href="#about" class="nav-link"><span class="slash">/</span> About</a></li>
+                        <li><a href="#skills" class="nav-link"><span class="slash">/</span> Skills</a></li>
+                        <li><a href="#works" class="nav-link"><span class="slash">/</span> Works</a></li>
+                        <li><a href="#journey" class="nav-link"><span class="slash">/</span> Journey</a></li>
+                        <li><a href="#contact" class="nav-link"><span class="slash">/</span> Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <a href="#contact" class="btn-talk">
+                        <span class="dot">●</span> / Let's Talk
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section: Cinematic Animator Statement & Showreel Canvas -->
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <div class="hero-top-meta">
+                    <span class="meta-tag">PARIS / LONDON / LA BASED</span>
+                    <span class="meta-tag">2D + 3D HYBRID ANIMATION</span>
+                    <span class="meta-status">AVAILABLE FOR Q3/Q4 2026</span>
+                </div>
+
+                <div class="hero-title-group">
+                    <p class="hero-eyebrow">/ Web Design Class Assignment</p>
+                    <h1 class="hero-headline">
+                        ***<br>
+                        <span class="headline-outline">D14371340</span><br>
+                        <span class="headline-accent">JIA KAI LIU</span>
+                    </h1>
+                </div>
+
+                <!-- Showreel Banner (Single Color Pic with Viewfinder HUD) -->
+                <div class="hero-showreel-box" id="showreel-viewport">
+                    <div class="showreel-frame">
+                        <img src="images/hero-showreel-still.png" alt="Showreel" class="single-color-img showreel-img">
+                        <div class="showreel-hud-overlay">
+                            <div class="hud-top">
+                                <span class="hud-reel-title">SHOWREEL 2026 // ACTION CUTS</span>
+                                <span class="hud-reel-fps">1s &amp; 2s HYBRID TIMING</span>
+                            </div>
+                            <div class="hud-center-play">
+                                <div class="play-ring" id="play-reel-btn" role="button" tabindex="0"
+                                    title="Play Showreel Demonstration">
+                                    <span class="play-icon">▶</span>
+                                </div>
+                                <span class="play-caption">CLICK TO PLAY NOTHING</span>
+                            </div>
+                            <div class="hud-bottom">
+                                <span class="hud-reel-tc" id="reel-scrub-tc">00:01:24:18</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Timeline Scrubber Bar -->
+                    <div class="showreel-timeline-scrubber">
+                        <div class="timeline-track">
+                            <div class="timeline-playhead" id="timeline-playhead" style="width: 38%;"></div>
+                        </div>
+                        <div class="timeline-labels">
+                            <span>00:00:00:00</span>
+                            <span class="timeline-marker-text">24 FPS</span>
+                            <span>00:01:24:18</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fast Studio Marquee / Awards -->
+                <div class="hero-ticker-band">
+                    <div class="ticker-track">
+                        <span class="ticker-item">★ 2D KEY ANIMATION</span>
+                        <span class="ticker-item">★ ACTION CHOREOGRAPHY &amp; STAGING</span>
+                        <span class="ticker-item">★ COMBAT TIMING</span>
+                        <span class="ticker-item">★ BLENDER GREASE PENCIL 2D/3D HYBRID</span>
+                        <span class="ticker-item">★ COLOR SCRIPT &amp; DOPE SHEET</span>
+                        <span class="ticker-item">★ 2D KEY ANIMATION</span>
+                        <span class="ticker-item">★ ACTION CHOREOGRAPHY &amp; STAGING</span>
+                        <span class="ticker-item">★ COMBAT TIMING</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: About Me -->
+        <section class="section about-section" id="about">
+            <div class="section-container">
+                <header class="section-header-row">
+                    <div class="section-number">[ 01 ]</div>
+                    <div class="section-title-wrap">
+                        <span class="section-tag">/ THE LOWDOWN</span>
+                        <h2 class="section-title">About Me <span class="title-en">/ Profile</span></h2>
+                    </div>
+                </header>
+
+                <div class="about-grid">
+                    <!-- Left: Animator Portrait (Single Color Pic) -->
+                    <div class="about-portrait-card">
+                        <div class="portrait-photo-frame">
+                            <img src="images/kai-avatar.png" alt="*** Portrait - Single Solid Color Picture #FF2A55"
+                                class="single-color-img portrait-img">
+                            <div class="portrait-hud">
+                            </div>
+                        </div>
+                        <div class="portrait-meta-box">
+                            <h3 class="animator-name">劉嘉凱 <span class="en-name">JIA KAI LIU</span></h3>
+                            <p class="animator-role">2D/3D Lead Animator &amp; Action Director</p>
+                            <p class="animator-bio-note">Specializing in high-impact kinetic action, extreme perspective
+                                distortion, and hybrid anime/western dynamic timing.</p>
+                            <div class="animator-badges">
+                                <span class="badge">PARIS / LONDON / LA</span>
+                                <span class="badge">GOBELINS </span>
+                                <span class="badge">15+ YRS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Animator Manifesto & Philosophy -->
+                    <div class="about-content-card">
+                        <div class="content-block">
+                            <p class="block-body">
+                                I am an independent key animator and film maker. Deeply inspired by the raw
+                                kinetic energy of <strong>The Line Studio and Fortiche Production</strong>, and
+                                contemporary digital hybrids, I dedicate my craft to exploring the expressive
+                                boundaries of hand-drawn lines across modern digital screens.
+                            </p>
+                            <p class="block-body">
+                                My focus lies in dynamic 24 FPS timing &amp; spacing, extreme wide-angle lens
+                                distortion, fluid organic FX (smoke, sparks, and debris), and authentic physical weight
+                                transfer during high-velocity combat. Whether on music videos, game cinematics,
+                                commercial spots, or auteur short films, I pursue the purest kinetic pulse in every cut.
+                            </p>
+                        </div>
+
+                        <!-- Recognition & Awards Inspired by The Line Studio -->
+                        <div class="awards-vault">
+                            <h4 class="vault-title">/ Mentions &amp; Selections [ Honors &amp; Awards ]</h4>
+                            <ul class="awards-list">
+                                <li class="award-item">
+                                    <span class="award-year">2035</span>
+                                    <span class="award-name">Annie Awards — Outstanding Achievement, Character Animation
+                                        in a Feature Production</span>
+                                    <span class="award-cat">[ Award Winner ]</span>
+                                </li>
+                                <li class="award-item">
+                                    <span class="award-year">2034</span>
+                                    <span class="award-name">BAFTA Games Awards — Best Animated Sequence, "PHANTOM
+                                        BLADE: Resurrection"</span>
+                                    <span class="award-cat">[ Nominated &amp; Shortlisted ]</span>
+                                </li>
+                                <li class="award-item">
+                                    <span class="award-year">2033</span>
+                                    <span class="award-name">Cannes Film Festival — Official Selection, Animated Shorts
+                                        Competition</span>
+                                    <span class="award-cat">[ Official Selection ]</span>
+                                </li>
+                                <li class="award-item">
+                                    <span class="award-year">2032</span>
+                                    <span class="award-name">Vimeo Staff Pick — "NEON OVERDRIVE" Action Sequence</span>
+                                    <span class="award-cat">[ Staff Pick Featured ]</span>
+                                </li>
+                                <li class="award-item">
+                                    <span class="award-year">2031</span>
+                                    <span class="award-name">Annecy International Animation Festival — XR &amp;
+                                        Immersive Media Pitch</span>
+                                    <span class="award-cat">[ Official Pitch Selection ]</span>
+                                </li>
+                                <li class="award-item">
+                                    <span class="award-year">2030</span>
+                                    <span class="award-name">Tokyo International Anime Award — Best Action
+                                        Direction</span>
+                                    <span class="award-cat">[ Gold Award ]</span>
+                                </li>
+                                <li class="award-item">
+                                    <span class="award-year">2029</span>
+                                    <span class="award-name">Taipei Film Festival — Best Animated Short Film</span>
+                                    <span class="award-cat">[ Short Film Winner ]</span>
+                                </li>
+                                <li class="award-item">
+                                    <span class="award-year">2028</span>
+                                    <span class="award-name">ASIFA-Hollywood Animation Showcase — Excellence in Key
+                                        Animation</span>
+                                    <span class="award-cat">[ Award Winner ]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Skills & Specialties -->
+        <section class="section skills-section" id="skills">
+            <div class="section-container">
+                <header class="section-header-row">
+                    <div class="section-number">[ 02 ]</div>
+                    <div class="section-title-wrap">
+                        <span class="section-tag">/ CAPABILITIES &amp; PIPELINE</span>
+                        <h2 class="section-title">Skills &amp; Specialties <span class="title-en">/ Disciplines &amp;
+                                Workflow</span></h2>
+                    </div>
+                </header>
+
+                <div class="skills-grid">
+                    <!-- Skill Card 1 -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <span class="skill-idx">01</span>
+                            <span class="skill-type">CORE DISCIPLINE</span>
+                        </div>
+                        <h3 class="skill-name">2D Action Key Animation</h3>
+                        <p class="skill-desc">
+                            Deep mastery over the 12 Principles of Animation. Specializing in high-octane hand-drawn
+                            combat, smear frames, kinetic impact, and dimensional volume. Precise command of mixed
+                            timing charts (1s, 2s, and 3s rhythm modulation).
+                        </p>
+                        <div class="skill-meta-tags">
+                            <span class="tag">Keyframing</span>
+                            <span class="tag">Smear Cuts</span>
+                            <span class="tag">Spacing &amp; Arcs</span>
+                            <span class="tag">Weight &amp; Momentum</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Card 2 -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <span class="skill-idx">02</span>
+                            <span class="skill-type">CINEMATOGRAPHY</span>
+                        </div>
+                        <h3 class="skill-name">Dynamic Storyboarding &amp; Camera Staging</h3>
+                        <p class="skill-desc">
+                            Director-level visual storytelling and dynamic camera choreography. Seamlessly orchestrating
+                            swooping tracking shots, 360-degree rotational moves, and continuous one-shot action cuts
+                            within a hand-drawn 2D plane.
+                        </p>
+                        <div class="skill-meta-tags">
+                            <span class="tag">Dynamic Staging</span>
+                            <span class="tag">Lens Distortion</span>
+                            <span class="tag">Animatics</span>
+                            <span class="tag">Pacing &amp; Beat</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Card 3 -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <span class="skill-idx">03</span>
+                            <span class="skill-type">INNOVATION</span>
+                        </div>
+                        <h3 class="skill-name">3D-to-2D Hybrid Pipeline (Blender &amp; Hand-drawn)</h3>
+                        <p class="skill-desc">
+                            Integrating Blender Grease Pencil and 3D spatial rough proxies to pre-visualize complex
+                            perspective rotations and lighting volumes, followed by 100% hand-drawn clean inking for
+                            organic life and soul.
+                        </p>
+                        <div class="skill-meta-tags">
+                            <span class="tag">Blender Grease Pencil</span>
+                            <span class="tag">3D Pre-vis</span>
+                            <span class="tag">Hand-drawn Finish</span>
+                            <span class="tag">Line Weight</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Card 4 -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <span class="skill-idx">04</span>
+                            <span class="skill-type">PRODUCTION</span>
+                        </div>
+                        <h3 class="skill-name">Timing Charts, Dope Sheets &amp; Color Scripts</h3>
+                        <p class="skill-desc">
+                            Full fluency in industry-standard exposure sheets (Dope Sheet / X-Sheet). Directing
+                            in-betweening and digital clean-up with precision, alongside orchestrating high-contrast
+                            color scripts and atmospheric mood keys.
+                        </p>
+                        <div class="skill-meta-tags">
+                            <span class="tag">Dope Sheet (X-Sheet)</span>
+                            <span class="tag">Clean-up Inking</span>
+                            <span class="tag">Palette Scripting</span>
+                            <span class="tag">Lighting Tone</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software & Tool Stack Monospace Bar -->
+                <div class="toolstack-bar">
+                    <div class="toolstack-label">/ SOFTWARE ARSENAL:</div>
+                    <div class="toolstack-items">
+                        <span class="tool-pill">TVPaint Animation 11 Pro</span>
+                        <span class="tool-pill">Clip Studio Paint EX</span>
+                        <span class="tool-pill">Blender (Grease Pencil &amp; Layout)</span>
+                        <span class="tool-pill">Toon Boom Harmony</span>
+                        <span class="tool-pill">Storyboard Pro</span>
+                        <span class="tool-pill">Adobe After Effects</span>
+                        <span class="tool-pill">Photoshop &amp; DaVinci Resolve</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Selected Works -->
+        <section class="section works-section" id="works">
+            <div class="section-container">
+                <header class="section-header-row">
+                    <div class="section-number">[ 03 ]</div>
+                    <div class="section-title-wrap">
+                        <span class="section-tag">/ PORTFOLIO VAULT</span>
+                        <h2 class="section-title">Selected Works <span class="title-en">/ Featured Projects [ 06
+                                ]</span></h2>
+                    </div>
+                </header>
+
+                <!-- Filter Controls -->
+                <div class="works-filter-bar">
+                    <span class="filter-label">/ FILTER:</span>
+                    <div class="filter-buttons" id="works-filter-btns">
+                        <button class="filter-btn active" data-category="all">ALL [ 06 ]</button>
+                        <button class="filter-btn" data-category="sakuga">2D KEY ANIMATION [ 03 ]</button>
+                        <button class="filter-btn" data-category="game">GAME CINEMATIC [ 02 ]</button>
+                        <button class="filter-btn" data-category="commercial">COMMERCIAL [ 02 ]</button>
+                        <button class="filter-btn" data-category="short">SHORT FILM [ 01 ]</button>
+                    </div>
+                </div>
+
+                <!-- Projects Grid (Every Photo is a Single Solid Color Picture) -->
+                <div class="works-grid" id="works-grid-container">
+                    <!-- Project 01 -->
+                    <article class="project-card" data-category="sakuga commercial" data-id="1">
+                        <div class="project-media-frame">
+                            <img src="images/work-01-neon-overdrive.png"
+                                alt="NEON OVERDRIVE - Single Solid Color Picture #FF3344"
+                                class="single-color-img project-img">
+                            <div class="project-hud-overlay">
+                                <div class="hud-top-meta">
+                                    <span class="hud-mono">TC 00:04:18:12</span>
+                                    <span class="hud-mono">[ 24 FPS ]</span>
+                                </div>
+                                <div class="hud-center-action">
+                                    <span class="view-pill">VIEW DOSSIER +</span>
+                                </div>
+                                <div class="hud-bottom-meta">
+                                    <span class="color-indicator">■ SINGLE COLOR: #FF3344 ELECTRIC VERMILION</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <span class="project-num">/ 01</span>
+                                <span class="project-genre">MUSIC VIDEO / COMMERCIAL</span>
+                            </div>
+                            <h3 class="project-title">NEON OVERDRIVE <span class="zh-sub">[ Speed Climax ]</span></h3>
+                            <p class="project-synopsis">
+                                A high-octane cyberpunk motorcycle pursuit sequence crafted for an international
+                                electronic music label. Features 1,420 frames of pure hand-drawn action, fisheye
+                                perspective shifts, and neon smear trails.
+                            </p>
+                            <div class="project-meta-row">
+                                <span class="meta-item"><strong>ROLE:</strong> Lead Key Animator &amp; Choreo</span>
+                                <span class="meta-item"><strong>YEAR:</strong> 2035</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 02 -->
+                    <article class="project-card" data-category="game sakuga" data-id="2">
+                        <div class="project-media-frame">
+                            <img src="images/work-02-phantom-blade.png"
+                                alt="PHANTOM BLADE: RESURRECTION - Single Solid Color Picture #00D2FF"
+                                class="single-color-img project-img">
+                            <div class="project-hud-overlay">
+                                <div class="hud-top-meta">
+                                    <span class="hud-mono">TC 00:08:52:04</span>
+                                    <span class="hud-mono">[ 24 FPS ]</span>
+                                </div>
+                                <div class="hud-center-action">
+                                    <span class="view-pill">VIEW DOSSIER +</span>
+                                </div>
+                                <div class="hud-bottom-meta">
+                                    <span class="color-indicator">■ SINGLE COLOR: #00D2FF CYBER CYAN</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <span class="project-num">/ 02</span>
+                                <span class="project-genre">AAA GAME CINEMATIC</span>
+                            </div>
+                            <h3 class="project-title">PHANTOM BLADE <span class="zh-sub">[ Resurrection ]</span></h3>
+                            <p class="project-synopsis">
+                                Dual sword combat duel climax for an AAA action game announcement trailer. Highlights
+                                momentum shifts, blade sparks, impact frames, and ink wash fluid effects.
+                            </p>
+                            <div class="project-meta-row">
+                                <span class="meta-item"><strong>ROLE:</strong> Combat Sequence Animator</span>
+                                <span class="meta-item"><strong>YEAR:</strong> 2034</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 03 -->
+                    <article class="project-card" data-category="short sakuga" data-id="3">
+                        <div class="project-media-frame">
+                            <img src="images/work-03-eclipse-runner.png"
+                                alt="ECLIPSE RUNNER - Single Solid Color Picture #FFB800"
+                                class="single-color-img project-img">
+                            <div class="project-hud-overlay">
+                                <div class="hud-top-meta">
+                                    <span class="hud-mono">TC 00:12:15:19</span>
+                                    <span class="hud-mono">[ 24 FPS ]</span>
+                                </div>
+                                <div class="hud-center-action">
+                                    <span class="view-pill">VIEW DOSSIER +</span>
+                                </div>
+                                <div class="hud-bottom-meta">
+                                    <span class="color-indicator">■ SINGLE COLOR: #FFB800 HAZARD AMBER</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <span class="project-num">/ 03</span>
+                                <span class="project-genre">ORIGINAL ANIMATED SHORT</span>
+                            </div>
+                            <h3 class="project-title">ECLIPSE RUNNER <span class="zh-sub">[ Solar Ruin ]</span></h3>
+                            <p class="project-synopsis">
+                                Independent animated short film. Follows a rooftop parkour sprint through gravitational
+                                anomalies during a total solar eclipse. Animated on 2s for authentic kinematic rhythm.
+                            </p>
+                            <div class="project-meta-row">
+                                <span class="meta-item"><strong>ROLE:</strong> Director &amp; Key Animator</span>
+                                <span class="meta-item"><strong>YEAR:</strong> 2034</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 04 -->
+                    <article class="project-card" data-category="commercial" data-id="4">
+                        <div class="project-media-frame">
+                            <img src="images/work-04-astral-beast.png"
+                                alt="ASTRAL BEAST - Single Solid Color Picture #7C3AED"
+                                class="single-color-img project-img">
+                            <div class="project-hud-overlay">
+                                <div class="hud-top-meta">
+                                    <span class="hud-mono">TC 00:01:45:00</span>
+                                    <span class="hud-mono">[ 24 FPS ]</span>
+                                </div>
+                                <div class="hud-center-action">
+                                    <span class="view-pill">VIEW DOSSIER +</span>
+                                </div>
+                                <div class="hud-bottom-meta">
+                                    <span class="color-indicator">■ SINGLE COLOR: #7C3AED ROYAL VIOLET</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <span class="project-num">/ 04</span>
+                                <span class="project-genre">BRAND COMMERCIAL SPOT</span>
+                            </div>
+                            <h3 class="project-title">ASTRAL BEAST <span class="zh-sub">[ Spectral Titan ]</span></h3>
+                            <p class="project-synopsis">
+                                Streetwear brand visual identity spot. Centered on a massive bioluminescent celestial
+                                creature moving through city skyscrapers with a 360-degree continuous camera rotation.
+                            </p>
+                            <div class="project-meta-row">
+                                <span class="meta-item"><strong>ROLE:</strong> Layout &amp; Key Animator</span>
+                                <span class="meta-item"><strong>YEAR:</strong> 2033</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 05 -->
+                    <article class="project-card" data-category="game" data-id="5">
+                        <div class="project-media-frame">
+                            <img src="images/work-05-void-protocol.png"
+                                alt="VOID PROTOCOL - Single Solid Color Picture #10B981"
+                                class="single-color-img project-img">
+                            <div class="project-hud-overlay">
+                                <div class="hud-top-meta">
+                                    <span class="hud-mono">TC 00:19:08:23</span>
+                                    <span class="hud-mono">[ 24 FPS ]</span>
+                                </div>
+                                <div class="hud-center-action">
+                                    <span class="view-pill">VIEW DOSSIER +</span>
+                                </div>
+                                <div class="hud-bottom-meta">
+                                    <span class="color-indicator">■ SINGLE COLOR: #10B981 EMERALD ACID</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <span class="project-num">/ 05</span>
+                                <span class="project-genre">SCI-FI ANIME EPISODE CLIMAX</span>
+                            </div>
+                            <h3 class="project-title">VOID PROTOCOL <span class="zh-sub">[ Mecha Climax ]</span></h3>
+                            <p class="project-synopsis">
+                                Guest key animator for a 45-second uncut close-quarters mecha dogfight and missile
+                                barrage explosion sequence. Featured across animation community highlights.
+                            </p>
+                            <div class="project-meta-row">
+                                <span class="meta-item"><strong>ROLE:</strong> Guest Key Animator</span>
+                                <span class="meta-item"><strong>YEAR:</strong> 2033</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 06 -->
+                    <article class="project-card" data-category="short" data-id="6">
+                        <div class="project-media-frame">
+                            <img src="images/work-06-tokyo-driftwood.png"
+                                alt="TOKYO DRIFTWOOD - Single Solid Color Picture #F43F5E"
+                                class="single-color-img project-img">
+                            <div class="project-hud-overlay">
+                                <div class="hud-top-meta">
+                                    <span class="hud-mono">TC 00:23:40:11</span>
+                                    <span class="hud-mono">[ 24 FPS ]</span>
+                                </div>
+                                <div class="hud-center-action">
+                                    <span class="view-pill">VIEW DOSSIER +</span>
+                                </div>
+                                <div class="hud-bottom-meta">
+                                    <span class="color-indicator">■ SINGLE COLOR: #F43F5E HOT MAGENTA</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <span class="project-num">/ 06</span>
+                                <span class="project-genre">EXPERIMENTAL ANIMATION</span>
+                            </div>
+                            <h3 class="project-title">TOKYO DRIFTWOOD <span class="zh-sub">[ Urban Solitude ]</span>
+                            </h3>
+                            <p class="project-synopsis">
+                                An experimental short examining urban loneliness and fleeting neon reflections. Utilizes
+                                rough charcoal scans and minimal solid color psychology.
+                            </p>
+                            <div class="project-meta-row">
+                                <span class="meta-item"><strong>ROLE:</strong> Solo Director &amp; Animator</span>
+                                <span class="meta-item"><strong>YEAR:</strong> 2032</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Learning Journey -->
+        <section class="section journey-section" id="journey">
+            <div class="section-container">
+                <header class="section-header-row">
+                    <div class="section-number">[ 04 ]</div>
+                    <div class="section-title-wrap">
+                        <span class="section-tag">/ TRAJECTORY &amp; EVOLUTION</span>
+                        <h2 class="section-title">Learning Journey <span class="title-en">/ Milestones &amp;
+                                History</span></h2>
+                    </div>
+                </header>
+
+                <div class="timeline-container">
+                    <!-- Milestone 1 -->
+                    <div class="timeline-block">
+                        <div class="timeline-meta-col">
+                            <span class="timeline-year">2034 — 2035</span>
+                            <span class="timeline-status-badge">CURRENT PHASE</span>
+                        </div>
+                        <div class="timeline-body-col">
+                            <div class="timeline-still-frame">
+                                <img src="images/learning-still-1.png"
+                                    alt="Milestone 1 Production Still - Single Color Picture #1E293B"
+                                    class="single-color-img timeline-img">
+                                <span class="still-color-tag">■ SINGLE COLOR PIC: #1E293B SLATE NAVY</span>
+                            </div>
+                            <div class="milestone-content">
+                                <h3 class="milestone-title">Senior Key Animator &amp; Action Consultant</h3>
+                                <h4 class="milestone-org">Studio Horizon / International Co-Productions</h4>
+                                <p class="milestone-desc">
+                                    Handling complex action cuts and mentoring junior animators on rhythm and pacing.
+                                    Developed an efficient 3D-to-2D hybrid pipeline linking Blender and TVPaint for
+                                    seamless
+                                    production handoffs.
+                                </p>
+                                <ul class="milestone-deliverables">
+                                    <li>Delivered over 35 high-intensity action cuts for international commercial
+                                        projects
+                                    </li>
+                                    <li>Built standardized digital TVPaint &amp; Blender Grease Pencil workflow
+                                        templates
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2 -->
+                    <div class="timeline-block">
+                        <div class="timeline-meta-col">
+                            <span class="timeline-year">2031 — 2034</span>
+                            <span class="timeline-status-badge">STUDIO EXPERIENCE</span>
+                        </div>
+                        <div class="timeline-body-col">
+                            <div class="timeline-still-frame">
+                                <img src="images/learning-still-2.png"
+                                    alt="Milestone 2 Production Still - Single Color Picture #334155"
+                                    class="single-color-img timeline-img">
+                                <span class="still-color-tag">■ SINGLE COLOR PIC: #334155 IRON CHARCOAL</span>
+                            </div>
+                            <div class="milestone-content">
+                                <h3 class="milestone-title">2D Animator &amp; 2nd Keyframe Lead</h3>
+                                <h4 class="milestone-org">Animation Works</h4>
+                                <p class="milestone-desc">
+                                    Collaborated on cross-border TV series and feature films. Managed 2nd keyframe
+                                    cleanup,
+                                    complex in-between breakdown, and FX smoke animation while mastering standard
+                                    industry exposure sheets.
+                                </p>
+                                <ul class="milestone-deliverables">
+                                    <li>Mastered studio standard exposure dope sheet (Time Sheet) systems</li>
+                                    <li>Maintained a steady output of 400+ monthly keyframe drawings with zero retakes
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3 -->
+                    <div class="timeline-block">
+                        <div class="timeline-meta-col">
+                            <span class="timeline-year">2029 — 2032</span>
+                            <span class="timeline-status-badge">ACADEMIC FOUNDATION</span>
+                        </div>
+                        <div class="timeline-body-col">
+                            <div class="timeline-still-frame">
+                                <img src="images/learning-still-3.png"
+                                    alt="Milestone 3 Production Still - Single Color Picture #475569"
+                                    class="single-color-img timeline-img">
+                                <span class="still-color-tag">■ SINGLE COLOR PIC: #475569 STEEL GRAY</span>
+                            </div>
+                            <div class="milestone-content">
+                                <h3 class="milestone-title">B.F.A. in Animation &amp; Digital Arts (First-Class Honors)
+                                </h3>
+                                <h4 class="milestone-org">Gobelins, l'école de l'image, Paris</h4>
+                                <p class="milestone-desc">
+                                    Formed a rigorous foundation in dynamic anatomy, figure gesture sketching, and
+                                    cinematic
+                                    visual grammar. Graduation film 'Eclipse Runner' received the Gold Campus Animation
+                                    Award and was pitched at Annecy.
+                                </p>
+                                <ul class="milestone-deliverables">
+                                    <li>Graduated top of class across four years of rigorous classical animation studies
+                                    </li>
+                                    <li>Accumulated over 2,000 dynamic gesture sketches and structural anatomy study
+                                        books
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Contact -->
+        <section class="section contact-section" id="contact">
+            <div class="section-container">
+                <header class="section-header-row">
+                    <div class="section-number">[ 05 ]</div>
+                    <div class="section-title-wrap">
+                        <span class="section-tag">/ REACH OUT &amp; TRANSMIT</span>
+                        <h2 class="section-title">Contact <span class="title-en">/ Let's Talk</span></h2>
+                    </div>
+                </header>
+
+                <div class="contact-main-grid">
+                    <!-- Left: Studio Details (The Line Studio Style) -->
+                    <div class="contact-info-col">
+                        <div class="talk-huge-header">
+                            <h3 class="huge-talk-text">/ LET'S TALK$$$.</h3>
+                            <p class="talk-sub">
+                                Whether you're developing an animated commercial, game cinematic, music video, or
+                                original production, feel free to reach out.
+                            </p>
+                        </div>
+
+                        <div class="info-block">
+                            <span class="info-label">/ DIRECT INBOX</span>
+                            <a href="mailto:[EMAIL_ADDRESS]" class="info-val-link">
+                                d14371340@gm.tut.edu.tw
+                            </a>
+                        </div>
+
+                        <div class="info-block">
+                            <span class="info-label">/ STUDIO LOCATION</span>
+                            <p class="info-val">
+                                2D st, l'Animation District,<br>
+                                France
+                            </p>
+                        </div>
+
+                        <div class="info-block">
+                            <span class="info-label">/ SOCIAL TRANSMISSION</span>
+                            <div class="social-links-grid">
+                                <a href="#works" class="social-link-item"><span class="slash">/</span> YouTube</a>
+                                <a href="#works" class="social-link-item"><span class="slash">/</span> Vimeo</a>
+                                <a href="#works" class="social-link-item"><span class="slash">/</span> X (Twitter)</a>
+                                <a href="#works" class="social-link-item"><span class="slash">/</span> Instagram</a>
+                                <a href="#works" class="social-link-item"><span class="slash">/</span> ArtStation</a>
+                                <a href="#works" class="social-link-item"><span class="slash">/</span> LinkedIn</a>
+                            </div>
+                        </div>
+
+                        <div class="availability-status-card">
+                            <div class="avail-header">
+                                <span class="avail-dot"></span>
+                                <span class="avail-title">PRODUCTION AVAILABILITY</span>
+                            </div>
+                            <p class="avail-text">
+                                Currently accepting commission bookings and production contracts for Q3/Q4 2035.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Terminal Transmission Form -->
+                    <div class="contact-form-col">
+                        <div class="terminal-box">
+                            <div class="terminal-bar">
+                                <span class="terminal-dots">
+                                    <span class="t-dot red"></span>
+                                    <span class="t-dot yellow"></span>
+                                    <span class="t-dot green"></span>
+                                </span>
+                                <span class="terminal-title">TERMINAL // TRANSMIT_PROJECT_INQUIRY</span>
+                            </div>
+
+                            <form class="terminal-form" id="contact-form">
+                                <div class="form-group">
+                                    <label for="form-name" class="form-label">> YOUR NAME OR STUDIO / NAME <span
+                                            class="req">*</span></label>
+                                    <input type="text" id="form-name" class="terminal-input"
+                                        placeholder="e.g. Alberto Mielgo / Hayao Miyazaki / Genndy Tartakovsky"
+                                        required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="form-email" class="form-label">> DIRECT EMAIL / EMAIL <span
+                                            class="req">*</span></label>
+                                    <input type="email" id="form-email" class="terminal-input"
+                                        placeholder="e.g. d14371340@gm.tut.edu.tw" required>
+                                </div>
+
+                                <div class="form-row-2">
+                                    <div class="form-group">
+                                        <label for="form-category" class="form-label">> PROJECT TYPE</label>
+                                        <select id="form-category" class="terminal-select">
+                                            <option value="keyframe">2D Keyframe Animation</option>
+                                            <option value="cinematic">Game Cinematic Trailer</option>
+                                            <option value="commercial">Commercial / Music Video</option>
+                                            <option value="storyboard">Website Design Class Assignment</option>
+                                            <option value="other">General Collaboration</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="form-timeline" class="form-label">> ESTIMATED TIMELINE</label>
+                                        <input type="text" id="form-timeline" class="terminal-input"
+                                            placeholder="e.g. RIGHT NOW!">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="form-message" class="form-label">> PROJECT DETAILS / MESSAGE <span
+                                            class="req">*</span></label>
+                                    <textarea id="form-message" class="terminal-textarea" rows="4"
+                                        placeholder="Briefly describe project goals, cut count, visual references, and timeline..., and PAYMENT, especially the PAYMENT, HOW MANY MONEY YOU GONNA PAY ME?"
+                                        required></textarea>
+                                </div>
+
+                                <div class="form-footer-actions">
+                                    <button type="submit" class="terminal-submit-btn" id="submit-btn">
+                                        <span>[ TRANSMIT INQUIRY 🚀 ]</span>
+                                    </button>
+                                    <button type="button" class="terminal-btn-copy" id="copy-email-btn">
+                                        <span>[ 📋 COPY EMAIL ]</span>
+                                    </button>
+                                </div>
+                            </form>
+
+                            <!-- Live Transmission Status Console -->
+                            <div class="terminal-console-log" id="console-log">
+                                <span class="log-prefix">> SYSTEM READY:</span> Encrypted transmission active. Every
+                                photo on this site is a verified single solid color picture.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer (The Line Studio Style) -->
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div class="footer-col-brand">
+                    <span class="footer-logo"> PROFOLIO // JIA KAI LIU</span>
+                    <p class="footer-tagline"> Assignment for web design class</p>
+                    <p class="footer-note">All visuals displayed are placeholder :)</p>
+                </div>
+                <div class="footer-col-nav">
+                    <a href="#about" class="footer-link">/ About</a>
+                    <a href="#skills" class="footer-link">/ Skills</a>
+                    <a href="#works" class="footer-link">/ Work</a>
+                    <a href="#journey" class="footer-link">/ Journey</a>
+                    <a href="#contact" class="footer-link">/ Contact</a>
+                </div>
+                <div class="footer-col-legal">
+                    <p class="copy-text">© 2026 ***. ALL RIGHTS RESERVED.</p>
+                    <button type="button" class="back-to-top-btn" id="back-to-top">
+                        <span>↑ RETURN TO TOP [ TOP ]</span>
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Project Detail Dossier Modal -->
+    <div class="project-modal" id="project-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-window">
+            <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">✕ CLOSE [ ESC ]</button>
+            <div class="modal-content" id="modal-content-body">
+                <!-- Dynamically Populated by script.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating HUD Toast Notification -->
+    <div class="hud-toast" id="hud-toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
